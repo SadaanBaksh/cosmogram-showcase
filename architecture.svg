@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6275"/>
+    </marker>
+    <style>
+      .box{rx:10;stroke-width:1.5}
+      .t{font-size:15px;font-weight:700;fill:#1d2230}
+      .s{font-size:12px;fill:#454c5e}
+      .lane{font-size:12px;font-weight:700;letter-spacing:1.5px}
+      .ln{stroke:#5b6275;stroke-width:1.6;fill:none;marker-end:url(#a)}
+    </style>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="21" font-weight="700" fill="#1d2230">COSMO Engine · compute, generate, verify</text>
+
+  <!-- lanes -->
+  <rect x="20" y="62" width="920" height="120" rx="12" fill="#eef4fb"/>
+  <text x="36" y="82" class="lane" fill="#2c5d8f">1 · DETERMINISTIC (always correct)</text>
+  <rect x="20" y="196" width="920" height="120" rx="12" fill="#f6f0fb"/>
+  <text x="36" y="216" class="lane" fill="#6a3d8f">2 · LLM GENERATION (reads well)</text>
+  <rect x="20" y="330" width="920" height="150" rx="12" fill="#fbf3ea"/>
+  <text x="924" y="350" text-anchor="end" class="lane" fill="#94591c">3 · VALIDATION GATE (verify, don't trust)</text>
+  <rect x="20" y="494" width="920" height="90" rx="12" fill="#eef7f1"/>
+  <text x="36" y="514" class="lane" fill="#2b7a4b">4 · DELIVERY</text>
+
+  <!-- lane 1 -->
+  <rect class="box" x="40" y="94" width="180" height="70" fill="#fff" stroke="#2c5d8f"/>
+  <text x="130" y="122" text-anchor="middle" class="t">Order sheet</text>
+  <text x="130" y="142" text-anchor="middle" class="s">watched every 5 min</text>
+  <rect class="box" x="265" y="94" width="190" height="70" fill="#fff" stroke="#2c5d8f"/>
+  <text x="360" y="122" text-anchor="middle" class="t">Intake + geocode</text>
+  <text x="360" y="142" text-anchor="middle" class="s">LLM typo fix · time zone</text>
+  <rect class="box" x="500" y="94" width="210" height="70" fill="#fff" stroke="#2c5d8f"/>
+  <text x="605" y="122" text-anchor="middle" class="t">Computation</text>
+  <text x="605" y="142" text-anchor="middle" class="s">Swiss Ephemeris · numbers</text>
+  <rect class="box" x="755" y="94" width="165" height="70" fill="#2c5d8f" stroke="#2c5d8f"/>
+  <text x="837" y="122" text-anchor="middle" class="t" style="fill:#fff">Chart JSON</text>
+  <text x="837" y="142" text-anchor="middle" class="s" style="fill:#dbe7f4">source of truth</text>
+  <path class="ln" d="M220,129 H262"/><path class="ln" d="M455,129 H497"/><path class="ln" d="M710,129 H752"/>
+
+  <!-- lane 2 -->
+  <rect class="box" x="40" y="228" width="230" height="70" fill="#fff" stroke="#6a3d8f"/>
+  <text x="155" y="256" text-anchor="middle" class="t">Palm photos (CV)</text>
+  <text x="155" y="276" text-anchor="middle" class="s">quality check · 3 reads agree</text>
+  <rect class="box" x="330" y="228" width="300" height="70" fill="#fff" stroke="#6a3d8f"/>
+  <text x="480" y="256" text-anchor="middle" class="t">Opus writes sections in parallel</text>
+  <text x="480" y="276" text-anchor="middle" class="s">read-only facts sheet · JSON schema · word caps</text>
+  <rect class="box" x="690" y="228" width="230" height="70" fill="#fff" stroke="#6a3d8f"/>
+  <text x="805" y="256" text-anchor="middle" class="t">Facts overwrite</text>
+  <text x="805" y="276" text-anchor="middle" class="s">computed values replace model's</text>
+  <path class="ln" d="M837,164 V180 H480 V225"/>
+  <path class="ln" d="M270,263 H327"/><path class="ln" d="M630,263 H687"/>
+
+  <!-- lane 3 -->
+  <rect class="box" x="40" y="364" width="250" height="96" fill="#fff" stroke="#94591c"/>
+  <text x="165" y="392" text-anchor="middle" class="t">Rule + fact gate</text>
+  <text x="165" y="414" text-anchor="middle" class="s">schema · caps · banned content</text>
+  <text x="165" y="432" text-anchor="middle" class="s">fact check vs chart JSON</text>
+  <rect class="box" x="355" y="364" width="250" height="96" fill="#fff" stroke="#94591c"/>
+  <text x="480" y="392" text-anchor="middle" class="t">Independent LLM audit</text>
+  <text x="480" y="414" text-anchor="middle" class="s">second pass checks every claim</text>
+  <rect class="box" x="670" y="364" width="250" height="96" fill="#fff" stroke="#94591c"/>
+  <text x="795" y="392" text-anchor="middle" class="t">Render + PDF checks</text>
+  <text x="795" y="414" text-anchor="middle" class="s">overflow · page count · text sweep</text>
+  <text x="795" y="432" text-anchor="middle" class="s">LLM looks at every page</text>
+  <path class="ln" d="M805,298 V316 H165 V361"/>
+  <path class="ln" d="M290,412 H352"/><path class="ln" d="M605,412 H667"/>
+  <path d="M60,364 C60,336 135,336 135,361" class="ln" stroke-dasharray="4 3"/>
+  <text x="178" y="353" class="s" font-style="italic">fail → rewrite (max 2)</text>
+
+  <!-- lane 4 -->
+  <rect class="box" x="400" y="524" width="230" height="50" fill="#fff" stroke="#2b7a4b"/>
+  <text x="515" y="554" text-anchor="middle" class="t">Drive + Gmail → customer</text>
+  <rect class="box" x="690" y="524" width="230" height="50" fill="#fff" stroke="#b23b3b"/>
+  <text x="805" y="554" text-anchor="middle" class="t" style="fill:#b23b3b">Still failing → held for review</text>
+  <path class="ln" d="M795,460 V488 H515 V521"/>
+  <path class="ln" d="M860,460 V521" stroke="#b23b3b" stroke-dasharray="4 3"/>
+</svg>
